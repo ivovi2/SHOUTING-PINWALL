@@ -1,0 +1,154 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\numberwithin{figure}{subsection}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor} 
+\usepackage{wrapfig} 
+\usepackage{enumitem}
+
+\usepackage{listings}
+\lstset{
+   breaklines=true,
+   basicstyle=\ttfamily
+   }
+
+\usepackage[T1]{fontenc}
+\usepackage{CJKutf8}
+\usepackage[english]{babel}
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{SHOUTING PINWALL: A simple pinwall-app by team CENTRAL PERK\\}
+
+\author{\IEEEauthorblockN{Ivo Maag}
+\IEEEauthorblockA{\textit{Dept. of Computer Science} \\
+\textit{Hanyang University}\\
+Seoul, Republic of Korea \\
+maagivo1@students.zhaw.ch}
+\and
+
+\IEEEauthorblockN{Jing Yang}
+\IEEEauthorblockA{\textit{Dept. of Information Systems} \\
+\textit{Hanyang University}\\
+Seoul, Republic of Korea \\
+alumpof@hanyang.ac.kr}
+\and
+
+\IEEEauthorblockN{Daeyoung Jung}
+\IEEEauthorblockA{\textit{Dept. of Information Systems} \\
+\textit{Hanyang University}\\
+Seoul, Republic of Korea \\
+dyjungs@gmail.com}
+\and
+
+\IEEEauthorblockN{Eonwoo Yoo}
+\IEEEauthorblockA{\textit{Dept. of Information Systems} \\
+\textit{Hanyang University}\\
+Seoul, Republic of Korea \\
+dbdjsdn123@naver.com}
+}
+
+\maketitle
+
+\begin{abstract}
+Online Bulletin Board for friends, bringing the idea of Analogue bulletin board to your mobile devices. This project is to create an Android app that uses Amazon Web Services (AWS) as a backend. It displays a pin wall where everyone can post a text. AWS will store the text in capital letters. The main purpose of this project is to learn how to use AWS and how to run software on it, how to build an Android App with backend and how to plan, document and organize a project in a team. On SHOUTING PINWALL, users can post their messages in CAPS in form of virtual post-it memo (with a character limit), on a virtual bulletin board that can only be shared with his or her friends. Through this, friends can share their stories easily. This basic app has a lot of potential for further development in case we have leftover time. For example, encryption or different media types.
+ 
+\end{abstract}
+\begin{IEEEkeywords}
+SHOUTING PINWALL, Android, AWS
+\end{IEEEkeywords}
+
+\section{Introduction} 
+Social Media has already become a huge part of our lives and the ways we can connect to each other are so broad that we often feel things have gotten too complicated. So, we decided that we want to bring back simplicity and intuitiveness to the way we communicate. Related SW or Services: Twitter, Instagram, Facebook, etc. 
+\newline
+
+\section{Requirements}
+\subsection{Functional requirements}
+\begin{enumerate}
+ \item As a user, I want to be able to see what other users posted.
+ \newline
+ \item As a user, I want to be able post a text on the pinwall.
+ \newline
+ \item As a user, I want to see an error message when sending.
+ \newline
+ \item As a user, I want to see the same content, no matter which device I use.
+ \newline
+ \item As a user I want to be able to load the newest messages.
+ \newline
+ \item As a user I want to be sure my posts are saved, even if I lost my phone.
+ \newline
+ \item As a user I want feedback after posting to ensure it was successful.
+ \newline
+ \item As a user, I want to start the voting phase to clear every content on the board if I click the ‘reset’ button.
+ \newline
+ \item As a user, when the voting phase for ‘reset’ starts I want to receive notification asking if I agree to reset the board. 
+ \newline
+ \item As a user, I want to receive a notification when the board is successfully cleared.
+ \newline
+ \item As a user, I want to choose the color of the memo I am going to post.
+ \newline
+ \item As a user, I want to delete the post I have uploaded when I want to. 
+ \newline
+ \item As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted. 
+ \newline
+ \item As a developer, I want to add further functionalities if necessary.
+ \newline
+ \item As a developer, I want tests to ensure the functionality is still provided after I changed the software.
+ \newline
+ \end{enumerate}
+
+\subsection{Non-functional requirements}
+\begin{enumerate}
+ \item \textbf{Performance}: Posts should be saved and loaded within half a second after initializing the process.
+ \newline
+ \item \textbf{Scalability}: The app should be able to handle up to 100 users wile staying in the set performance threshold.
+ \newline
+ \item \textbf{Responsiveness}: The app should adapt to screen sizes from 4-7 inches.
+ \newline
+ \item \textbf{Usability}: The functionality should be self-explanatory and not require any instruction to use it.
+ \newline
+ \item \textbf{Reliability}: The app should confirm visually if a task was done successfully.
+ \newline
+ \item \textbf{Security}: No security measures are planned at this point. Encryption is due to further development.
+ \newline
+ \item \textbf{Availability}: The app should be available 90\% of the time, since this application is not critical.
+ \newline
+ \item \textbf{Adoption to slow/no networks}: The app should display cached data if there is no connection.
+ \newline
+\end{enumerate}
+
+
+\section{Development environment}
+\subsection{App development}
+\begin{enumerate}
+ \item \textbf{IDE}: Android Studio
+ \newline
+ \item \textbf{Programming language}: Kotlin / Java
+ \newline
+ \end{enumerate}
+
+\subsection{Backend}
+\begin{enumerate}
+ \item \textbf{AWS}: Amazon Web Services
+ \newline
+\end{enumerate}
+
+\subsection{Collaboration}
+\begin{enumerate}
+ \item \textbf{Github}: Version Control and Collaboration of code.
+ \newline
+ \item \textbf{Kakao Talk}: Messenger to communicate among us.
+ \newline
+ \item \textbf{Overleaf}: Cloud Latex editor so we can work together on the same document simultaneously.
+ \newline
+\end{enumerate}
+
+\end{document}
