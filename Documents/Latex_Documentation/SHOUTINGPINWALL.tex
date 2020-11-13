@@ -10,7 +10,9 @@
 \usepackage{xcolor} 
 \usepackage{wrapfig} 
 \usepackage{enumitem}
-
+\usepackage{algorithm}
+\usepackage{algpseudocode} 
+\usepackage{hyperref}
 \usepackage{listings}
 \lstset{
    breaklines=true,
@@ -64,8 +66,25 @@ Online Bulletin Board for friends, bringing the idea of Analogue bulletin board 
 \end{abstract}
 \begin{IEEEkeywords}
 SHOUTING PINWALL, Android, AWS
+\newline
 \end{IEEEkeywords}
 
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    Role & Name & Task Description\\
+    \hline
+    User    & & To\\
+    \hline
+    Customer & & \\
+    \hline
+    Software Developer & &\\
+    \hline
+    Development Manager & &\\
+    \hline
+
+\end{tabular}
+\newline
 \section{Introduction} 
 Social Media has already become a huge part of our lives and the ways we can connect to each other are so broad that we often feel things have gotten too complicated. So, we decided that we want to bring back simplicity and intuitiveness to the way we communicate. Related SW or Services: Twitter, Instagram, Facebook, etc. 
 \newline
@@ -73,82 +92,353 @@ Social Media has already become a huge part of our lives and the ways we can con
 \section{Requirements}
 \subsection{Functional requirements}
 \begin{enumerate}
- \item As a user, I want to be able to see what other users posted.
- \newline
- \item As a user, I want to be able post a text on the pinwall.
- \newline
- \item As a user, I want to see an error message when sending.
- \newline
- \item As a user, I want to see the same content, no matter which device I use.
- \newline
- \item As a user I want to be able to load the newest messages.
- \newline
- \item As a user I want to be sure my posts are saved, even if I lost my phone.
- \newline
- \item As a user I want feedback after posting to ensure it was successful.
- \newline
- \item As a user, I want to start the voting phase to clear every content on the board if I click the ‘reset’ button.
- \newline
- \item As a user, when the voting phase for ‘reset’ starts I want to receive notification asking if I agree to reset the board. 
- \newline
- \item As a user, I want to receive a notification when the board is successfully cleared.
- \newline
- \item As a user, I want to choose the color of the memo I am going to post.
- \newline
- \item As a user, I want to delete the post I have uploaded when I want to. 
- \newline
- \item As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted. 
- \newline
- \item As a developer, I want to add further functionalities if necessary.
- \newline
- \item As a developer, I want tests to ensure the functionality is still provided after I changed the software.
- \newline
+ \item As a user, I want to be able to see what other users posted.\\
+ \item As a user, I want to be able post a text on the pinwall.\\
+ \item As a user, I want to see an error message when sending.\\
+ \item As a user, I want to see the same content, no matter which device I use.\\
+ \item As a user I want to be able to load the newest messages.\\
+ \item As a user I want to be sure my posts are saved, even if I lost my phone.\\
+ \item As a user I want feedback after posting to ensure it was successful.\\
+ \item As a user, I want to start the voting phase to clear every content on the board if I click the ‘reset’ button.\\
+ \item As a user, when the voting phase for ‘reset’ starts I want to receive notification asking if I agree to reset the board. \\
+ \item As a user, I want to receive a notification when the board is successfully cleared.\\
+ \item As a user, I want to choose the color of the memo I am going to post.\\
+ \item As a user, I want to delete the post I have uploaded when I want to. \\
+ \item As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted. \\
+ \item As a developer, I want to add further functionalities if necessary.\\
+ \item As a developer, I want tests to ensure the functionality is still provided after I changed the software.\\
  \end{enumerate}
 
 \subsection{Non-functional requirements}
+
 \begin{enumerate}
- \item \textbf{Performance}: Posts should be saved and loaded within half a second after initializing the process.
- \newline
- \item \textbf{Scalability}: The app should be able to handle up to 100 users wile staying in the set performance threshold.
- \newline
- \item \textbf{Responsiveness}: The app should adapt to screen sizes from 4-7 inches.
- \newline
- \item \textbf{Usability}: The functionality should be self-explanatory and not require any instruction to use it.
- \newline
- \item \textbf{Reliability}: The app should confirm visually if a task was done successfully.
- \newline
- \item \textbf{Security}: No security measures are planned at this point. Encryption is due to further development.
- \newline
- \item \textbf{Availability}: The app should be available 90\% of the time, since this application is not critical.
- \newline
- \item \textbf{Adoption to slow/no networks}: The app should display cached data if there is no connection.
- \newline
+
+ \item \textbf{Performance}: Posts should be saved and loaded within half a second after initializing the process.\\
+
+ \item \textbf{Scalability}: The app should be able to handle up to 100 users wile staying in the set performance threshold.\\
+
+ \item \textbf{Responsiveness}: The app should adapt to screen sizes from 4-7 inches.\\
+
+ \item \textbf{Usability}: The functionality should be self-explanatory and not require any instruction to use it.\\
+
+ \item \textbf{Reliability}: The app should confirm visually if a task was done successfully.\\
+
+ \item \textbf{Security}: No security measures are planned at this point. Encryption is due to further development.\\
+
+ \item \textbf{Availability}: The app should be available 90\% of the time, since this application is not critical.\\
+
+ \item \textbf{Adoption to slow/no networks}: The app should display cached data if there is no connection.\\
+
 \end{enumerate}
 
 
 \section{Development environment}
 \subsection{App development}
 \begin{enumerate}
- \item \textbf{IDE}: Android Studio
- \newline
- \item \textbf{Programming language}: Kotlin / Java
- \newline
+ \item \textbf{IDE}: Android Studio\\
+    We decided to use Android Studio for development, because it's the official development tool from google and it's the only way to program native Android apps. Also all the official Documentation is made for Android Studio.\\
+ 
+ \item \textbf{Programming language}: Kotlin / Java\\
+    Kotlin is the new preferred programming language from Google. Most of the official documentation is in Kotlin. The programming language feels more modern to us than java. It compiles to Java bitecode and can even be mixed with java code in case we will need that. It gives us the opportunity to get more experience on a programming language that will most likely be very relevant in the future.\\
+ 
+ \item \textbf{Development OS}: Ubuntu / Windows / MacOS\\
+    Android Studio is officially supported for all three mentioned operating systems. We actually have all of those in use and work together cross-platform. So far this didn't cause any problems. We use MacOS 10.15, Windows 10 and Ubuntu 20.04.\\
  \end{enumerate}
 
 \subsection{Backend}
 \begin{enumerate}
- \item \textbf{AWS}: Amazon Web Services
- \newline
+ \item \textbf{AWS}: Amazon Web Services lambda
+ \newline We see it as an opportunity to learn how to use a cloud environment. Our plan is to use AWS lambda for our backend. This way we don't have to worry about a physical hardware infrastructure and are still able to provide a server based service.\\
+ 
 \end{enumerate}
 
 \subsection{Collaboration}
 \begin{enumerate}
- \item \textbf{Github}: Version Control and Collaboration of code.
+ \item \textbf{Github}: Version Control and Collaboration of code. We use Sublime Merge as a Github desktop client.
  \newline
  \item \textbf{Kakao Talk}: Messenger to communicate among us.
  \newline
- \item \textbf{Overleaf}: Cloud Latex editor so we can work together on the same document simultaneously.
+ \item \textbf{Overleaf}: It's a cloud based Latex-editor, so we can work together on the same document simultaneously.
  \newline
-\end{enumerate}
+ \end{enumerate}
 
+\subsection{Cost Estimation}
+\textbf{Software}
+\begin{enumerate}
+\item Android Studio: Free
+\item Kakao Talk: Free
+\item Overleaf student subscription: 8 USD / Month
+\item AWS: 100 credits free, which should be enough for our project.
+\end{enumerate}
+\textbf{Hardware}
+\begin{enumerate}
+\item Our personal computers: Around 5'000'000 Won. But we need them anyways for school, so we do not calculate them in.
+\end{enumerate}
+\textbf{Working hours}
+\begin{enumerate}
+\item Around five 8-hour working days per person. So around 20 working days in total. At a hypothetical 60'000 krw/hour total would be  9.6 Million Won.
+\end{enumerate}
+\textbf{Total}
+The total would be 9.6 Million + 3 * 9k (Overleaf * 4 Months) =\textbf{ 9.627 Million Won} At this price we would probably not be very competitive in the market.
+\newline
+
+
+\section{Specifications}
+\subsection{View Posts}
+As a user, I want to be able to see what other users posted
+\begin{lstlisting}
+    if Access Main Pinwall {
+        show Uploaded Post in Time order
+        if No Post exist yet {
+            print "There's nothing here yet! Add something new!"
+        }
+    }
+\end{lstlisting}
+	
+\subsection{Add Posts}
+As a user, I want to be able post a text on the pinwall.
+\begin{lstlisting}
+    if Click '+' icon {
+        moveTo Post Editing Page
+            Post Editing Page() {
+                1. Edit Title
+                2. Edit Content (Max 140 Bytes)
+                3. Select Post colour
+                4. Edit View Until <date>
+                5. Upload by clicking 'Upload'
+            if Post Successfully Uploaded {
+                alert "Posted! :D"
+            }
+            else
+                alert "Error: Post failed :("
+            }
+        
+        else Cancel by 'Go Back' button
+    }
+\end{lstlisting}
+
+\subsection{View Newest Post}
+As a user I want to be able to load the newest messages.
+\begin{lstlisting}
+    if Log-in
+        print Latest 5 posts from top down
+\end{lstlisting}
+
+\subsection{Save Post}
+As a user I want to be sure my posts are saved, even if I lost my phone.\\
+\begin{lstlisting}
+    if Register a message on the bulletin board.
+        Store in cloud service.
+        
+    if ID/PW matches.
+        it can keep the contents of the post intact.
+\end{lstlisting}
+
+\subsection{Feedback after posting}
+As a user I want feedback after posting to ensure it was successful.\\
+\begin{lstlisting}
+    if The user writes on the post.
+        if successfully registered.
+            print ("Successfully registered with bulletin board.")
+            
+    
+    else
+        print ("Failed to register with bulletin board.")
+\end{lstlisting}
+
+
+\subsection{Reset the bulletin board}
+As a user, I want to start the voting phase to clear every content on the board if I click the ‘reset’ button\\
+\begin{lstlisting}
+    if Click the reset button.
+	    ClearBoard() // Delete all content from the bulletin board.
+\end{lstlisting}
+
+\subsection{Agree to Reset}
+ As a user, when the voting phase for ‘reset’ starts I want to receive notification asking if I agree to reset the board.\\
+\begin{lstlisting}
+    if Click the reset button
+        print( "Do you agree to reset the bulletin board? (Y/N) " )
+        then Receive input from the user which Y or N.
+\end{lstlisting}
+
+\subsection{Notification for Reset successfully}
+As a user, I want to receive a notification when the board is successfully cleared.\\
+\begin{lstlisting}
+    Click reset button to receive input from user which Y or N.
+    
+    if User Input is Y
+        ClearBoard() // Delete all content from the bulletin board.
+        print ("Bulletin board reset successful.") 
+        
+    if  User Input is N
+        print ("Bulletin board reset fail")
+\end{lstlisting}
+
+\subsection{Choose Color of Memos}
+As a user, I want to choose the color of the memo I am going to post.\\
+\begin{lstlisting}
+if User wants to choose the color of the memo
+	print"What color of the memo do you prefer?"
+	if color = xxx
+		print memo in xxx
+    print"Do you want to change the color?"
+    if user click the "Yes" button{
+    	repeat print"What color of the memo do you prefer?"
+   		if color = xxx
+    		print memo in xxx
+    }
+    else 
+    	exit the program
+\end{lstlisting}
+
+\subsection{Delete Posts}
+As a user, I want to delete the post I have uploaded when I want to. \\
+\begin{lstlisting}
+if User wants to delete the post
+	DeleteThePost()
+   if post successfully deleted{
+		print"Deleted."
+	}
+	else{
+		print"Error: Delete failed."
+	}
+\end{lstlisting}
+
+\subsection{Set a Time Limit}
+As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted. \\
+\begin{lstlisting}
+if user wants to set a time limit on the post
+	SetTime = limit number
+	if Time >=  SetTime{
+		DeleteThePost()
+	}
+    if post successfully deleted{
+		print"Deleted."
+	}
+	else{
+		print"Error: Delete failed."
+	}
+\end{lstlisting}
+
+\subsection{Add Further Functionalities}
+As a developer, I want to add further functionalities if necessary.\\
+\begin{lstlisting}
+if developer wants to add further functionalities
+	AddFurtherFunctionalities()
+	TesttheFunctionality()
+	if the functionality doesn't successfully added{
+    	print("Rewrite the code, something wrong with the functionality."
+    }
+    else
+    	exit TestFunctionality()
+    	
+\end{lstlisting}
+
+\subsection{Tests}
+As a developer, I want tests to ensure the functionality is still provided after I changed the software.\\
+
+This can be done by unit tests. However, based on experience testing the UI doesn't make a lot of sence, so we should focus on functionality tests such as the following example that is thesting the validity of an e-mail address.
+
+\begin{lstlisting}
+if software changed
+	TesttheFunctionality()
+	if the functionality doesn't provided
+		print("Something wrong with the functionality. Rewrite the code!")
+	else
+		exit TesttheFunctionality()
+\end{lstlisting}
+
+
+
+\subsection{Performance}
+Posts  should  be  saved  and  loaded  within half a second after initializing the process.\\
+
+Cached content should be displayed first, so if the connection is slow it doesn't wait for connection until it displays something. To display the list itself in under half a second should not be a problem.
+
+\begin{lstlisting}
+loadCachedData()
+updateView()
+loadFromNetwork()
+updateView()
+\end{lstlisting}
+
+
+\subsection{Scalability}
+The app should be able to handle up to 100users wile staying in the set performance threshold.\\
+
+This should not be a problem on the frontend but maybe on the backend. Using AWS for our backend should solve this problem already since we can add resources if needed. If we get to the limit, we could assist by loading only the necessary data, for example only newly added post and not the whole list.
+
+\begin{lstlisting}
+loadNewPosts(int postNr) {
+    for post in posts {
+        if post.nr >= postNr {
+            sendPost()
+        }
+    }
+}
+\end{lstlisting}
+
+
+\subsection{Responsiveness}
+The  app  should  adapt  to  screen  sizes from 4-7 inches.\\
+
+This can be achieved with constraint-layouts in Android Studio which allows to place items in relation to each other.\\
+
+
+\subsection{Usability}
+The  functionality  should  be  self-explanatory and not require any instruction to use it.\\
+
+This can be achieved by naming buttons in a way that makes sense and place them in a natural way. Following Android guidelines also helps, because users are also used to the gestures from other apps. Also getting user feedback can help to achieve this.\\
+
+
+\subsection{Reliability}
+The  app  should  confirm  visually  if  a  task was done successfully\\
+
+The best way to do this is probably not with pop-ups, but by displaying some kind of loading animation and updating the view after completion.
+
+\begin{lstlisting}
+postContent() --> asynchronous
+displayLoading()
+callback --> updateView()
+\end{lstlisting}
+
+
+\subsection{Security}
+No security measures are planned at this point.Encryption is due to further development.\\
+
+We decided because security is not the simplest thing to implement and would be beyond the scope of this project. But in a real-life productive application, specially if it involves personal data, proper encryption is a must.\\
+
+
+\subsection{Avialability}
+The  app  should  be  available  90\%  of  the time, since this application is not critical.\\
+
+No implementation necessary. Uptime can be calculated as follows:
+
+\begin{lstlisting}
+Time of running service / Total aimed operation time.
+\end{lstlisting}
+
+
+\subsection{Adoption to slow/no networks}
+The app should display cached data if there is no connection.\\
+
+Also minimize network traffic can be helpful. The following article explains well how to achieve this in an android app.
+\url{https://developer.android.com/training/efficient-downloads/redundant_redundant}
+
+\begin{lstlisting}
+loadContent(){
+    checkIfLoadingIsNecessary()
+    if yes {
+        loadFromNetwork()
+    } else {
+        loadCache()
+    }
+    updateView()
+}
+\end{lstlisting}
+
+
+
+			
 \end{document}
