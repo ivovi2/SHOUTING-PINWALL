@@ -14,6 +14,7 @@
 \usepackage{algpseudocode} 
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{cleveref, array, booktabs, threeparttable}
 \lstset{
    breaklines=true,
    basicstyle=\ttfamily
@@ -22,6 +23,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{CJKutf8}
 \usepackage[english]{babel}
+
+\graphicspath{ {./images/} }
 
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -65,25 +68,30 @@ Online Bulletin Board for friends, bringing the idea of Analogue bulletin board 
  
 \end{abstract}
 \begin{IEEEkeywords}
-SHOUTING PINWALL, Android, AWS
-\newline
+SHOUTING PINWALL, Android, AWS\\
 \end{IEEEkeywords}
 
+\begin{table}[ht!] \renewcommand\arraystretch{1.25}
+  \begin{threeparttable}
+      \caption{Role Assignments%
+      \label{tab:table1}}    %% Caption above tabular, label inside caption
+      \begin{tabular}{@{}l l>{\raggedright\arraybackslash}p{3.8cm}@{}}
+      \toprule
+      \bfseries Role & \bfseries Name & \multicolumn{1}{l}{\bfseries Task description and etc.} \\
+      \midrule
+      User & Ivo & What do I need so the app is nice to use? Test the app and give feedback.\\
+      
+      Customer & Jing & What do we need for our company to maximize productivity? Communicate with users as well as the development team. Responsible for cost and carries risk.\\
+      
+      Software Developer & Daeyoung & Internal Worker. Tries to fulfill the costumers need in the code. Ideally with regular contact with Dev manager as well as costumer. Making incremental progress and shares it.\\
+      
+      Development manager & Eonwoo & Has an overview over budget, costumer dev. progress etc. Is in direct contact with costumer as well as dev. He has a the big picture and should detect early when things go sideways.\\
+      \bottomrule
+      \end{tabular}
+  \end{threeparttable}
+\end{table}
 
-\begin{tabular}{|c|c|c|}
-    \hline
-    Role & Name & Task Description\\
-    \hline
-    User    & & To\\
-    \hline
-    Customer & & \\
-    \hline
-    Software Developer & &\\
-    \hline
-    Development Manager & &\\
-    \hline
 
-\end{tabular}
 \newline
 \section{Introduction} 
 Social Media has already become a huge part of our lives and the ways we can connect to each other are so broad that we often feel things have gotten too complicated. So, we decided that we want to bring back simplicity and intuitiveness to the way we communicate. Related SW or Services: Twitter, Instagram, Facebook, etc. 
@@ -96,10 +104,8 @@ Social Media has already become a huge part of our lives and the ways we can con
  \item As a user, I want to be able post a text on the pinwall.\\
  \item As a user, I want to see an error message when sending.\\
  \item As a user, I want to see the same content, no matter which device I use.\\
- \item As a user I want to be able to load the newest messages.\\
  \item As a user I want to be sure my posts are saved, even if I lost my phone.\\
  \item As a user I want feedback after posting to ensure it was successful.\\
- \item As a user, I want to start the voting phase to clear every content on the board if I click the ‘reset’ button.\\
  \item As a user, when the voting phase for ‘reset’ starts I want to receive notification asking if I agree to reset the board. \\
  \item As a user, I want to receive a notification when the board is successfully cleared.\\
  \item As a user, I want to choose the color of the memo I am going to post.\\
@@ -108,9 +114,9 @@ Social Media has already become a huge part of our lives and the ways we can con
  \item As a developer, I want to add further functionalities if necessary.\\
  \item As a developer, I want tests to ensure the functionality is still provided after I changed the software.\\
  \end{enumerate}
+ 
 
-\subsection{Non-functional requirements}
-
+\subsection{General requirements}
 \begin{enumerate}
 
  \item \textbf{Performance}: Posts should be saved and loaded within half a second after initializing the process.\\
@@ -185,18 +191,14 @@ The total would be 9.6 Million + 3 * 9k (Overleaf * 4 Months) =\textbf{ 9.627 Mi
 
 \section{Specifications}
 \subsection{View Posts}
-As a user, I want to be able to see what other users posted
-\begin{lstlisting}
-    if Access Main Pinwall {
-        show Uploaded Post in Time order
-        if No Post exist yet {
-            print "There's nothing here yet! Add something new!"
-        }
-    }
-\end{lstlisting}
+As a user, I want to be able to see what other users posted\\
+
+To achieve this we need an Android Listview which loads the posts from the backend and displays them in chronological order.
 	
 \subsection{Add Posts}
-As a user, I want to be able post a text on the pinwall.
+As a user, I want to be able post a text on the pinwall.\\
+
+A "+"-icon on the bottom of the screen will enable someone to add a post.
 \begin{lstlisting}
     if Click '+' icon {
         moveTo Post Editing Page
@@ -217,63 +219,15 @@ As a user, I want to be able post a text on the pinwall.
     }
 \end{lstlisting}
 
-\subsection{View Newest Post}
-As a user I want to be able to load the newest messages.
-\begin{lstlisting}
-    if Log-in
-        print Latest 5 posts from top down
-\end{lstlisting}
-
 \subsection{Save Post}
 As a user I want to be sure my posts are saved, even if I lost my phone.\\
-\begin{lstlisting}
-    if Register a message on the bulletin board.
-        Store in cloud service.
-        
-    if ID/PW matches.
-        it can keep the contents of the post intact.
-\end{lstlisting}
+
+To achieve this we use the amazon cloud services. Every time a user is posting, the post is automatically uploaded.
 
 \subsection{Feedback after posting}
 As a user I want feedback after posting to ensure it was successful.\\
-\begin{lstlisting}
-    if The user writes on the post.
-        if successfully registered.
-            print ("Successfully registered with bulletin board.")
-            
-    
-    else
-        print ("Failed to register with bulletin board.")
-\end{lstlisting}
 
-
-\subsection{Reset the bulletin board}
-As a user, I want to start the voting phase to clear every content on the board if I click the ‘reset’ button\\
-\begin{lstlisting}
-    if Click the reset button.
-	    ClearBoard() // Delete all content from the bulletin board.
-\end{lstlisting}
-
-\subsection{Agree to Reset}
- As a user, when the voting phase for ‘reset’ starts I want to receive notification asking if I agree to reset the board.\\
-\begin{lstlisting}
-    if Click the reset button
-        print( "Do you agree to reset the bulletin board? (Y/N) " )
-        then Receive input from the user which Y or N.
-\end{lstlisting}
-
-\subsection{Notification for Reset successfully}
-As a user, I want to receive a notification when the board is successfully cleared.\\
-\begin{lstlisting}
-    Click reset button to receive input from user which Y or N.
-    
-    if User Input is Y
-        ClearBoard() // Delete all content from the bulletin board.
-        print ("Bulletin board reset successful.") 
-        
-    if  User Input is N
-        print ("Bulletin board reset fail")
-\end{lstlisting}
+To achieve this we simply update the view after storing it. This will give the user visual verification that it worked. If storing fails we'll need to place an error message.
 
 \subsection{Choose Color of Memos}
 As a user, I want to choose the color of the memo I am going to post.\\
@@ -294,6 +248,8 @@ if User wants to choose the color of the memo
 
 \subsection{Delete Posts}
 As a user, I want to delete the post I have uploaded when I want to. \\
+
+If we manage to implement this feature, we need to make every post identifiable and we need a http request for the backend to delete a post.
 \begin{lstlisting}
 if User wants to delete the post
 	DeleteThePost()
@@ -305,35 +261,10 @@ if User wants to delete the post
 	}
 \end{lstlisting}
 
-\subsection{Set a Time Limit}
-As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted. \\
-\begin{lstlisting}
-if user wants to set a time limit on the post
-	SetTime = limit number
-	if Time >=  SetTime{
-		DeleteThePost()
-	}
-    if post successfully deleted{
-		print"Deleted."
-	}
-	else{
-		print"Error: Delete failed."
-	}
-\end{lstlisting}
-
 \subsection{Add Further Functionalities}
 As a developer, I want to add further functionalities if necessary.\\
-\begin{lstlisting}
-if developer wants to add further functionalities
-	AddFurtherFunctionalities()
-	TesttheFunctionality()
-	if the functionality doesn't successfully added{
-    	print("Rewrite the code, something wrong with the functionality."
-    }
-    else
-    	exit TestFunctionality()
-    	
-\end{lstlisting}
+
+We try to achieve this with a modular build and by taking care about coding standards. Code fragments that are used in multiple screens should be exported into a separate class.
 
 \subsection{Tests}
 As a developer, I want tests to ensure the functionality is still provided after I changed the software.\\
@@ -380,7 +311,7 @@ loadNewPosts(int postNr) {
 \end{lstlisting}
 
 
-\subsection{Responsiveness}
+\subsection{Cross-device compatibility}
 The  app  should  adapt  to  screen  sizes from 4-7 inches.\\
 
 This can be achieved with constraint-layouts in Android Studio which allows to place items in relation to each other.\\
@@ -438,6 +369,19 @@ loadContent(){
 }
 \end{lstlisting}
 
+
+\section{Screens}
+\subsection{Home Screen}
+The Home Screen displays our app name on the top. Under it is a Listview with all the posts loaded from the backend. On the bottom is a plus sign that can be used to create a new post.\\
+\includegraphics[width=8cm]{bibtex/images/Home_Screen.png}
+
+\subsection{Add Post Screen}
+This screen shows a button to return to the home screen alongside the app name on the top. Under it is an input field to type a post. When clicking on it, the keyboard opens and with enter-button the post can be sent.\\
+\includegraphics[width=8cm]{bibtex/images/Add_Post_Screen.png}
+
+\subsection{Add Post Screen}
+When clicking on a post on the home screen, this view opens. It shows the app name and the post in a bigger view. In the future here could be added more details such as pictures.\\
+\includegraphics[width=10cm]{bibtex/images/Post_Viewing_Screen.png}
 
 
 			
