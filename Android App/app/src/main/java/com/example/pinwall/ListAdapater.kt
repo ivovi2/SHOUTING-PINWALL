@@ -3,13 +3,11 @@ package com.example.pinwall
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapater(private val data: Array<Post>) :
-    RecyclerView.Adapter<RecyclerAdapater.MyHolder>() {
+class ListAdapater(private val data: Array<Post>) :
+    RecyclerView.Adapter<ListAdapater.MyHolder>() {
 
     class MyHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem)
     {
