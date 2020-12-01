@@ -32,6 +32,35 @@ class MainActivity : AppCompatActivity() {
 
     fun getPosts(): ArrayList<Post> {
         val postList = arrayListOf<Post>()
+        val array = arrayOfNulls<Post>(postList.size)
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=H9E2PQEDM8Y26C7F"
+
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET,
+            url,
+            null,
+            { response ->
+                try {
+                    val data = response.getJSONArray("Hallo")
+                    for (i in 0 until data.length()) {
+                        val stockData = data.getJSONObject(i)
+                        val title = stockData.getString("")
+                        val text = stockData.getString("")
+                        postList.add(Post(title, text))
+                    }
+
+                    pinList.adapter = ListAdapter(postList.toArray(array))
+
+
+
+                } catch (e: JSONException) {}
+            }, null
+        )
+
+        queue.add(jsonObjectRequest)
+
+
         return postList
     }
 
