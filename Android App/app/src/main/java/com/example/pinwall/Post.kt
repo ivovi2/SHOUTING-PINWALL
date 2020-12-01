@@ -1,3 +1,3 @@
 package com.example.pinwall
 
-class Post(var title: String, var text: String)
+class Post(val gender: Int, val title: String, val text: String)

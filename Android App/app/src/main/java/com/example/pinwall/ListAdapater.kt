@@ -3,30 +3,41 @@ package com.example.pinwall
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class ListAdapater(private val data: Array<Post>) :
+class ListAdapater(private val postList: ArrayList<Post>) :
     RecyclerView.Adapter<ListAdapater.MyHolder>() {
 
-    class MyHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem)
-    {
-        var title: TextView = itemView.findViewById(R.id.title)
-        var text: TextView = itemView.findViewById(R.id.text)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val v: View = LayoutInflater.from(parent.context).inflate(R.layout.activity_main, parent, false)
-        return MyHolder(v)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        return MyHolder(view).apply {
+            itemView.setOnClickListener {
+                val curPos : Int = adapterPosition
+                val post: Post = postList.get(curPos)
+                Toast.makeText(parent.context, "Title: ${post.title}, Content: ${post.text}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return postList.size
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        holder.title.text = data[position].title
-        holder.text.text = data[position].text
+        holder.gender.setImageResource(postList.get(position).gender)
+        holder.title.text = postList[position].title
+        holder.text.text = postList[position].text
+    }
+
+
+    class MyHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem)
+    {
+        var gender: ImageView = itemView.findViewById<ImageView>(R.id.iv_profile) //picture
+        var title: TextView = itemView.findViewById(R.id.tv_title)  //title
+        var text: TextView = itemView.findViewById(R.id.tv_content)  //content
     }
 
 }
