@@ -13,10 +13,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val postList = arrayListOf<Post>()
-        postList.add(Post("hallo", "i bims"))
-        postList.add(Post("hallo2", "i bims2"))
-        postList.add(Post("hallo3", "i bims3"))
+        val postList = addDemoPosts()
 
         val listItems = arrayOfNulls<String>(postList.size)
 
@@ -32,6 +29,22 @@ class MainActivity : AppCompatActivity() {
         pinList.adapter = adapter
 
     }
+
+    fun getPosts(): ArrayList<Post> {
+        val postList = arrayListOf<Post>()
+        return postList
+    }
+
+    fun addDemoPosts(): ArrayList<Post> {
+        val postList = arrayListOf<Post>()
+        postList.add(Post("hallo", "i bims"))
+        postList.add(Post("hallo2", "i bims2"))
+        postList.add(Post("hallo3", "i bims3"))
+        return postList
+    }
+
+
+
 }
 
 
