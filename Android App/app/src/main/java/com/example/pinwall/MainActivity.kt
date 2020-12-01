@@ -12,7 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 class MainActivity : AppCompatActivity() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
         val postList = addDemoPosts()
 
         val listItems = arrayOfNulls<String>(postList.size)
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             listItems[i] = post.title
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+        val adapter: ArrayAdapter<String?> = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
         pinList.adapter = adapter
 
     }
