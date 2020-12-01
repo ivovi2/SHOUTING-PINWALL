@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                         postList.add(Post(title, text))
                     }
 
-                    pinList.adapter = ListAdapter(postList.toArray(array))
+                    //pinList.adapter = PinnwallAdapter(postList.toArray(array))
 
 
 
