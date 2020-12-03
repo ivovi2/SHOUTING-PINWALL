@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "812259975314",
+    "project_id": "shouting-pinwall",
+    "storage_bucket": "shouting-pinwall.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812259975314:android:72f5096b1575c11478864b",
+        "android_client_info": {
+          "package_name": "com.example.pinwall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812259975314-6h1i657m73ig1v11el3f2tvmpfmsavsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxhgNpqNx_8yaUqwGj5xcHYRv71QlnE78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812259975314-6h1i657m73ig1v11el3f2tvmpfmsavsn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
