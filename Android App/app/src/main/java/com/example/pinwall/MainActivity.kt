@@ -7,7 +7,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONException
 import com.android.volley.toolbox.Volley
 import com.android.volley.Request
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import kotlinx.android.synthetic.main.list_component.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,39 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getPosts(): ArrayList<Post> {
-        val postList = arrayListOf<Post>()
-        val array = arrayOfNulls<Post>(postList.size)
-        val queue = Volley.newRequestQueue(this)
-        val url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=H9E2PQEDM8Y26C7F"
 
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET,
-            url,
-            null,
-            { response ->
-                try {
-                    val data = response.getJSONArray("Hallo")
-                    for (i in 0 until data.length()) {
-                        val stockData = data.getJSONObject(i)
-                        val title = stockData.getString("")
-                        val text = stockData.getString("")
-                        postList.add(Post(title, text))
-                    }
-
-                    //pinList.adapter = PinnwallAdapter(postList.toArray(array))
-
-
-
-                } catch (e: JSONException) {}
-            }, null
-        )
-
-        queue.add(jsonObjectRequest)
-
-
-        return postList
-    }
 
     fun addDemoPosts(): ArrayList<Post> {
         val postList = arrayListOf<Post>()
@@ -75,35 +45,3 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-
-
-
-
-        //pinList
-/*        val queue = Volley.newRequestQueue(this)
-
-        val url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=H9E2PQEDM8Y26C7F"
-
-        val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                { response ->
-                    try {
-                        val stocks = response.getJSONArray("Global Quote")
-                        for (i in 0 until stocks.length()) {
-                            val stockData = stocks.getJSONObject(i)
-                            val symbol = stockData.getString("01. symbol")
-                            val value = stockData.getString("05. price")
-                            items.add(Post(symbol, value))
-                        }
-
-                        //Todo: connect adapter with view
-
-                        //pinList.adapter = ListAdapater(items.toArray(array))
-
-                    } catch (e: JSONException) {}
-                }, null
-        )
-    }
-}*/

@@ -24,7 +24,7 @@ class PinnwallAdapter(private val context: Context, private val dataSource: Arra
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val rowView = inflater.inflate(R.layout.activity_main, parent, false)
+        val rowView = inflater.inflate(R.layout.list_component, parent, false)
         return rowView
     }
 }
