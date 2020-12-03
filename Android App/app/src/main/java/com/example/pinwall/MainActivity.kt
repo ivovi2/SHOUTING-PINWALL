@@ -2,14 +2,9 @@ package com.example.pinwall
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONException
-import com.android.volley.toolbox.Volley
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +14,8 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val db = FirebaseFirestore.getInstance()
+
 
         val pinList = arrayListOf(
             Post(R.drawable.men, "Daeyoung", "Hello World!"),
@@ -37,35 +34,3 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-
-
-
-
-        //pinList
-/*        val queue = Volley.newRequestQueue(this)
-
-        val url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=H9E2PQEDM8Y26C7F"
-
-        val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                { response ->
-                    try {
-                        val stocks = response.getJSONArray("Global Quote")
-                        for (i in 0 until stocks.length()) {
-                            val stockData = stocks.getJSONObject(i)
-                            val symbol = stockData.getString("01. symbol")
-                            val value = stockData.getString("05. price")
-                            items.add(Post(symbol, value))
-                        }
-
-                        //Todo: connect adapter with view
-
-                        //pinList.adapter = ListAdapater(items.toArray(array))
-
-                    } catch (e: JSONException) {}
-                }, null
-        )
-    }
-}*/
