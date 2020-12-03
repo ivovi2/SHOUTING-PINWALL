@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,19 +24,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        val pinList = arrayListOf(
-            Post(R.drawable.men, "Daeyoung", "Hello World!"),
-            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
-            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
-            Post(R.drawable.men, "Eunwoo", "안녕 세계!"),
-            Post(R.drawable.men, "Daeyoung", "Hello World!"),
-            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
-            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
-            Post(R.drawable.men, "Eunwoo", "안녕 세계!")
-
-        )
-
         //addPost(db, "hallo", "I just want to say hallo")
         //addPost(db, "ja", "I just want to say ja")
 
@@ -48,6 +34,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializePinList(): ArrayList<Post> {
         return arrayListOf(
+            Post(R.drawable.men, "Daeyoung", "Hello World!"),
+            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
+            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
+            Post(R.drawable.men, "Eunwoo", "안녕 세계!"),
             Post(R.drawable.men, "Daeyoung", "Hello World!"),
             Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
             Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
