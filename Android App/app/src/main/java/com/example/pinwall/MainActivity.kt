@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, AddPostActivity::class.java) //move to add screen intent obj
             startActivity(intent)
         }
+
+
+
+
+
 
         //addPost(db, "hallo", "I just want to say hallo")
         //addPost(db, "ja", "I just want to say ja")
