@@ -12,13 +12,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    var posts :ArrayList<Post> = ArrayList<Post>()
+
     override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val db = FirebaseFirestore.getInstance()
-        val posts = loadPosts(db)
+        posts = loadPosts(db)
+
         //val pinList = initializePinList(posts)
 
         addPostBttn.setOnClickListener {
@@ -30,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         updateLayout(posts)
 
 
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        loadPosts(FirebaseFirestore.getInstance())
     }
 
     fun updateLayout(posts: ArrayList<Post>) {
