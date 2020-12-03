@@ -1,9 +1,9 @@
 package com.example.pinwall
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
@@ -11,14 +11,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-        override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
+    override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val db = FirebaseFirestore.getInstance()
-        val pinList = initializePinList()
-        
+        val posts = loadPosts(db)
+        //val pinList = initializePinList(posts)
+
         addPostBttn.setOnClickListener {
             var intent = Intent(this, AddPostActivity::class.java) //move to add screen intent obj
             startActivity(intent)
@@ -27,22 +28,15 @@ class MainActivity : AppCompatActivity() {
         //addPost(db, "hallo", "I just want to say hallo")
         //addPost(db, "ja", "I just want to say ja")
 
-        rv_postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_postList.setHasFixedSize(true)
-        rv_postList.adapter = ListAdapater(pinList)
+        updateLayout(posts)
+
+
     }
 
-    private fun initializePinList(): ArrayList<Post> {
-        return arrayListOf(
-            Post(R.drawable.men, "Daeyoung", "Hello World!"),
-            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
-            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
-            Post(R.drawable.men, "Eunwoo", "안녕 세계!"),
-            Post(R.drawable.men, "Daeyoung", "Hello World!"),
-            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
-            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
-            Post(R.drawable.men, "Eunwoo", "안녕 세계!")
-        )
+    private fun updateLayout(posts: ArrayList<Post>) {
+        rv_postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rv_postList.setHasFixedSize(true)
+        rv_postList.adapter = ListAdapater(posts)
     }
 
     private fun addPost(db: FirebaseFirestore, title: String, text: String) {
@@ -67,5 +61,27 @@ class MainActivity : AppCompatActivity() {
                     e
                 )
             }
+    }
+
+    private fun loadPosts(db: FirebaseFirestore) : ArrayList<Post> {
+        var posts = ArrayList<Post>()
+        val TAG = "Message"
+
+        db.collection("posts")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                    val title = document.data.get("title").toString()
+                    val text =document.data.get("text").toString()
+                    val post = Post(title, text)
+                    posts.add(post)
+                    updateLayout(posts)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+        return posts
     }
 }

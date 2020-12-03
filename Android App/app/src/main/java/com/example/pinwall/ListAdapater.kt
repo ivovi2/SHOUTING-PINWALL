@@ -27,7 +27,6 @@ class ListAdapater(private val postList: ArrayList<Post>) :
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        holder.gender.setImageResource(postList.get(position).gender)
         holder.title.text = postList[position].title
         holder.text.text = postList[position].text
     }
@@ -35,7 +34,6 @@ class ListAdapater(private val postList: ArrayList<Post>) :
 
     class MyHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem)
     {
-        var gender: ImageView = itemView.findViewById<ImageView>(R.id.iv_profile) //picture
         var title: TextView = itemView.findViewById(R.id.tv_title)  //title
         var text: TextView = itemView.findViewById(R.id.tv_content)  //content
     }
