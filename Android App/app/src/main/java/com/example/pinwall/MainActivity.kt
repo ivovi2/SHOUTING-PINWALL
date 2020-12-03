@@ -23,51 +23,22 @@ class MainActivity : AppCompatActivity() {
 
         addPostBttn.setOnClickListener {
             var intent = Intent(this, AddPostActivity::class.java) //move to add screen intent obj
+
             startActivity(intent)
         }
-
-
-
-
-
-
-        //addPost(db, "hallo", "I just want to say hallo")
-        //addPost(db, "ja", "I just want to say ja")
 
         updateLayout(posts)
 
 
     }
 
-    private fun updateLayout(posts: ArrayList<Post>) {
+    fun updateLayout(posts: ArrayList<Post>) {
         rv_postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_postList.setHasFixedSize(true)
         rv_postList.adapter = ListAdapater(posts)
     }
 
-    private fun addPost(db: FirebaseFirestore, title: String, text: String) {
-        val post: MutableMap<String, String> = HashMap()
-        post["title"] = title
-        post["text"] = text
 
-        // Add a new document with a generated ID
-        val TAG = "Message"
-        db.collection("posts")
-            .add(post)
-            .addOnSuccessListener { documentReference ->
-                Log.d(
-                    TAG,
-                    "DocumentSnapshot added with ID: " + documentReference.id
-                )
-            }
-            .addOnFailureListener { e ->
-                Log.w(
-                    TAG,
-                    "Error adding document",
-                    e
-                )
-            }
-    }
 
     private fun loadPosts(db: FirebaseFirestore) : ArrayList<Post> {
         var posts = ArrayList<Post>()
