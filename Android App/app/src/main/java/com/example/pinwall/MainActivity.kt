@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONException
 import com.android.volley.toolbox.Volley
 import com.android.volley.Request
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             Post(R.drawable.men, "Eunwoo", "안녕 세계!")
 
         )
+
 
         rv_postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_postList.setHasFixedSize(true)

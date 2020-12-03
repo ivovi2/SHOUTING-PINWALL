@@ -41,3 +41,4 @@ class ListAdapater(private val postList: ArrayList<Post>) :
     }
 
 }
+
