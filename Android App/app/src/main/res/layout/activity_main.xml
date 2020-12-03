@@ -26,16 +26,18 @@
 
     <ImageButton
         android:id="@+id/addPostBttn"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
         android:contentDescription="add post button"
         android:scaleType="fitCenter"
+        android:tint="#5C000000"
         app:layout_constraintBottom_toBottomOf="@+id/rv_scrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
