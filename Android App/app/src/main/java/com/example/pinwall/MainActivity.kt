@@ -1,5 +1,6 @@
 package com.example.pinwall
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -14,11 +15,16 @@ import com.android.volley.toolbox.JsonObjectRequest
 
 class MainActivity : AppCompatActivity() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
+        override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        addPostBttn.setOnClickListener {
+            var intent = Intent(this, AddPostActivity::class.java) //move to add screen intent obj
+            startActivity(intent)
+        }
+
 
         val pinList = arrayListOf(
             Post(R.drawable.men, "Daeyoung", "Hello World!"),
