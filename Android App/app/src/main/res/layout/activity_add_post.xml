@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPostActivity">
+
+    <EditText
+        android:id="@+id/ap_titleBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="add Title"
+        android:inputType="textPersonName"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/ap_contentBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ap_contentBox"
+        android:layout_width="378dp"
+        android:layout_height="504dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="add Content"
+        android:inputType="textPersonName"
+        android:lineSpacingExtra="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ap_titleBox" />
+
+    <Button
+        android:id="@+id/ap_cancelBttn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="68dp"
+        android:text="Cancel"
+        app:backgroundTint="#777575"
+        app:iconTint="#B0ADAD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ap_addBttn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ap_contentBox" />
+
+    <Button
+        android:id="@+id/ap_addBttn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="68dp"
+        android:text="Add"
+        app:backgroundTint="#777575"
+        app:iconTint="#B0ADAD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ap_cancelBttn"
+        app:layout_constraintTop_toBottomOf="@+id/ap_contentBox" />
+</androidx.constraintlayout.widget.ConstraintLayout>

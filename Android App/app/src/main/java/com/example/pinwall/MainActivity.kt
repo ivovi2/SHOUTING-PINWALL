@@ -1,5 +1,7 @@
 package com.example.pinwall
 
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,14 +12,31 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
+        override fun onCreate(savedInstanceState: Bundle?) { //beginning of the activity
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val db = FirebaseFirestore.getInstance()
         val pinList = initializePinList()
+        
+        addPostBttn.setOnClickListener {
+            var intent = Intent(this, AddPostActivity::class.java) //move to add screen intent obj
+            startActivity(intent)
+        }
+
+
+        val pinList = arrayListOf(
+            Post(R.drawable.men, "Daeyoung", "Hello World!"),
+            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
+            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
+            Post(R.drawable.men, "Eunwoo", "안녕 세계!"),
+            Post(R.drawable.men, "Daeyoung", "Hello World!"),
+            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
+            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
+            Post(R.drawable.men, "Eunwoo", "안녕 세계!")
+
+        )
 
         //addPost(db, "hallo", "I just want to say hallo")
         //addPost(db, "ja", "I just want to say ja")
