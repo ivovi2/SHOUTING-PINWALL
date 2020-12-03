@@ -10,18 +10,32 @@
     <ScrollView
         android:id="@+id/rv_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_postList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </ScrollView>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_postList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/addPostBttn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="add post button"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

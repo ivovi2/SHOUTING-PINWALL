@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
             Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
             Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
             Post(R.drawable.men, "Eunwoo", "안녕 세계!"),
-                Post(R.drawable.men, "Daeyoung", "Hello World!"),
-                Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
-                Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
-                Post(R.drawable.men, "Eunwoo", "안녕 세계!")
+            Post(R.drawable.men, "Daeyoung", "Hello World!"),
+            Post(R.drawable.women, "Yang Kyung", "你好，世界!"),
+            Post(R.drawable.men, "Ivo Maag", "Hallo Welt"),
+            Post(R.drawable.men, "Eunwoo", "안녕 세계!")
 
         )
 
