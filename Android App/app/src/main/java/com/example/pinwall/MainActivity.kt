@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     val title = document.data.get("title").toString()
                     val text =document.data.get("text").toString()
                     val post = Post(title, text)
-                    posts.add(posts.size - 1, post)
+                    posts.add(post)
                     updateLayout(posts)
                 }
             }
