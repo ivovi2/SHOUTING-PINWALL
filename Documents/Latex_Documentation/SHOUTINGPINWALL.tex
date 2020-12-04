@@ -64,11 +64,11 @@ dbdjsdn123@naver.com}
 \maketitle
 
 \begin{abstract}
-Online Bulletin Board for friends, bringing the idea of Analogue bulletin board to your mobile devices. This project is to create an Android app that uses Amazon Web Services (AWS) as a backend. It displays a pin wall where everyone can post a text. AWS will store the text in capital letters. The main purpose of this project is to learn how to use AWS and how to run software on it, how to build an Android App with backend and how to plan, document and organize a project in a team. On SHOUTING PINWALL, users can post their messages in CAPS in form of virtual post-it memo (with a character limit), on a virtual bulletin board that can only be shared with his or her friends. Through this, friends can share their stories easily. This basic app has a lot of potential for further development in case we have leftover time. For example, encryption or different media types.
+Online Bulletin Board for friends, bringing the idea of Analogue bulletin board to your mobile devices. This project is to create an Android app that uses Firebase as a backend. It displays a pin wall where everyone can post a text. Firebase will store the text in capital letters. The main purpose of this project is to learn how to use Firebase and how to run software on it, how to build an Android App with backend and how to plan, document and organize a project in a team. On SHOUTING PINWALL, users can post their messages in CAPS in form of virtual post-it memo (with a character limit), on a virtual bulletin board that can only be shared with his or her friends. Through this, friends can share their stories easily. This basic app has a lot of potential for further development in case we have leftover time. For example, encryption or different media types.
  
 \end{abstract}
 \begin{IEEEkeywords}
-SHOUTING PINWALL, Android, AWS\\
+SHOUTING PINWALL, Android, Firebase\\
 \end{IEEEkeywords}
 
 \begin{table}[ht!] \renewcommand\arraystretch{1.25}
@@ -92,7 +92,7 @@ SHOUTING PINWALL, Android, AWS\\
 \end{table}
 
 
-\newline
+
 \section{Introduction} 
 Social Media has already become a huge part of our lives and the ways we can connect to each other are so broad that we often feel things have gotten too complicated. So, we decided that we want to bring back simplicity and intuitiveness to the way we communicate. Related SW or Services: Twitter, Instagram, Facebook, etc. 
 \newline
@@ -110,7 +110,7 @@ Social Media has already become a huge part of our lives and the ways we can con
  \item As a user, I want to receive a notification when the board is successfully cleared.\\
  \item As a user, I want to choose the color of the memo I am going to post.\\
  \item As a user, I want to delete the post I have uploaded when I want to. \\
- \item As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted. \\
+ \item As a user, I want to set a time limit on the post I upload. When the limit expires, the post is automatically deleted.\\
  \item As a developer, I want to add further functionalities if necessary.\\
  \item As a developer, I want tests to ensure the functionality is still provided after I changed the software.\\
  \end{enumerate}
@@ -153,8 +153,8 @@ Social Media has already become a huge part of our lives and the ways we can con
 
 \subsection{Backend}
 \begin{enumerate}
- \item \textbf{AWS}: Amazon Web Services lambda
- \newline We see it as an opportunity to learn how to use a cloud environment. Our plan is to use AWS lambda for our backend. This way we don't have to worry about a physical hardware infrastructure and are still able to provide a server based service.\\
+ \item \textbf{Firebase}: 
+ \newline We see it as an opportunity to learn how to use a cloud environment. Our plan is to use Firebase for our backend. This way we don't have to worry about a physical hardware infrastructure and are still able to provide a server based service.\\
  
 \end{enumerate}
 
@@ -174,7 +174,7 @@ Social Media has already become a huge part of our lives and the ways we can con
 \item Android Studio: Free
 \item Kakao Talk: Free
 \item Overleaf student subscription: 8 USD / Month
-\item AWS: 100 credits free, which should be enough for our project.
+\item Firebase: Free
 \end{enumerate}
 \textbf{Hardware}
 \begin{enumerate}
@@ -190,208 +190,228 @@ The total would be 9.6 Million + 3 * 9k (Overleaf * 4 Months) =\textbf{ 9.627 Mi
 
 
 \section{Specifications}
-\subsection{View Posts}
-As a user, I want to be able to see what other users posted\\
 
-To achieve this we need an Android Listview which loads the posts from the backend and displays them in chronological order.
-	
-\subsection{Add Posts}
-As a user, I want to be able post a text on the pinwall.\\
+\subsection{\textbf{Mobile Application(Android)}}
+\begin{enumerate}
+    \item Main Screen
+    \begin{enumerate}
+        \item View Post
+            \begin{enumerate}
+                \item By clicking the post on the list, it will move to another screen where it displays content of the post.
+            \end{enumerate}
+        \item Adding New Post
+            \begin{enumerate}
+                \item "+" icon  on  the  bottom  of  the  screen  will  let  the  user access  the  post-editing  page. The screen will switch to new post editing page so the user can write what he/she wants to upload.
+            \end{enumerate}
+        \item Refresh the post list
+            \begin{enumerate}
+                \item By pulling the list down, the list refreshes and fetches new content (if there is any) from the server.
+            \end{enumerate}
+        \item Display Posts made by others and yours
+            \begin{enumerate}
+                \item By starting the app, the main screen will display posts uploaded by others and yours in timely order. (Older posts are beneath and later ones are above)
+            \end{enumerate}
+    \end{enumerate}
+    By using RecyclerView on the layout, the posts will be loaded from the firebase database and displays them in chronological order.\\
+    \item Add Post Screen
+    \begin{enumerate}
+        \item Editing title of the Post
+            \begin{enumerate}
+                \item On the title text box, it will display hint text as 'add title' so user can tap(or click) the designated text box to edit the title of his/her post.
+            \end{enumerate}
+        \item Editing content of the Post
+            \begin{enumerate}
+                \item On the content text box, it will display hint text as 'add content' so user can tap(or click) the designated text box to edit the title of this/her post.
+            \end{enumerate}
+        \item ADD Button
+            \begin{enumerate}
+                \item Uploads the title and content to firebase database and closes the edit page. Automatically goes back to main page
+            \end{enumerate}
+        \item CANCEL Button
+            \begin{enumerate}
+                \item Deletes every change you made on title and content and closes the edit page, goes back to Main screen.
+            \end{enumerate}
+        \item Choose Color of Memos
+            \begin{enumerate}
+                \item By toggling button, the user can choose which color the post will be.
+            \end{enumerate}
+    \end{enumerate}
+    \item Alerts
+        \begin{enumerate}
+            \item Post Upload Successful
+                \begin{enumerate}
+                    \item If the new post is successfully uploaded to the database, an alert message will appear for brief seconds saying "Upload Successful!"
+                \end{enumerate}
+            \item Post Upload Failed
+                \begin{enumerate}
+                    \item If the content of the post fails to reach the database, an alert message will appear for brief seconds saying "Failed to Upload!"
+                \end{enumerate}
+            \item Post Deleted
+                \begin{enumerate}
+                    \item If user successfully deletes his/her post, an alert message will appear for brief seconds saying "Post Deleted!"
+                \end{enumerate}
+            \item Delete Unsuccessful
+                \begin{enumerate}
+                    \item If the app fails to delete the post in whatever reason or error, an alert message will appear for brief seconds saying "Delete Unsuccessful."
+                \end{enumerate}
+        \end{enumerate}
+\end{enumerate}
 
-A "+"-icon on the bottom of the screen will let the user access the post-editing page. The screen will switch to new post editing page so the user can write what he/she wants to upload.
-\begin{lstlisting}
-    if Click '+' icon {
-        moveTo Post Editing Page
-            Post Editing Page() {
-                1. Edit Title
-                2. Edit Content (Max 140 Bytes)
-                3. Select Post colour
-                4. Edit View Until <date>
-                5. Upload by clicking 'Upload'
-            if Post Successfully Uploaded {
-                alert "Posted! :D"
-            }
-            else
-                alert "Error: Post failed :("
-            }
-        
-        else Cancel by 'Go Back' button
-    }
-\end{lstlisting}
+\subsection{\textbf{Server}}
+    \begin{enumerate}
+        \item Mobile Application
+            \begin{enumerate}
+                \item Application connects and loads post data from database on start up. (onCreate phase)
+                \item Based on 'timestamp' data, the application displays posts on the main screen in chronological order.
+                \item In case when app fails to fetch data from server, it generates message saying "Error getting documents: \textit{Exception}"
+            \end{enumerate}
+        \item Firebase Server
+            \begin{enumerate}
+                \item In the server's database, the data of the uploaded post will be saved as document under 'post' collection. 
+                \item The post collection saves uploaded post data package by tagging randomly generated ID.
+                \item Inside the tagged document, it includes data of 'text', 'timestamp' and 'title'. The title and content data from the user is saved under these categories including timestamp data at the moment of upload.
+            \end{enumerate}
+    \end{enumerate}
 
-\subsection{Save Post}
-As a user I want to be sure my posts are saved. Not in the storage of my device but in online DB or server.\\
+\section{UI/UX}
+\subsection{Main Screen}
+The Main Screen displays our app name on the top. Under it is a listview with all the posts loaded from the server. On the bottom right is a plus button that triggers intent to new post editing screen on click.\\
 
-To achieve this we use cloud server services such as amazon cloud services. Whenever a user finishes editing and clicks the 'upload' button, it saves the written content to designated server, so it can be accessed later on by others as well. 
-
-\subsection{Feedback after posting}
-As a user I want feedback after posting to ensure it was successful.\\
-
-When the post is successfully uploaded, the app will display a message that it has been successfully uploaded. Or we simply update the view after storing it. This will give the user visual verification that it worked. If storing fails we will need to place an error message.
-
-\subsection{Choose Color of Memos}
-As a user, I want to choose the color of the memo I am going to post.\\
-\begin{lstlisting}
-if User wants to choose the color of the memo
-	print"What color of the memo do you prefer?"
-	if color = xxx
-		print memo in xxx
-    print"Do you want to change the color?"
-    if user click the "Yes" button{
-    	repeat print"What color of the memo do you prefer?"
-   		if color = xxx
-    		print memo in xxx
-    }
-    else 
-    	exit the program
-\end{lstlisting}
-
-\subsection{Delete Posts}
-As a user, I want to delete the post I have uploaded when I want to. \\
-
-If we manage to implement this feature, we need to make every post identifiable and we need a http request for the backend to delete a post.
-\begin{lstlisting}
-if User wants to delete the post
-	DeleteThePost()
-   if post successfully deleted{
-		print"Deleted."
-	}
-	else{
-		print"Error: Delete failed."
-	}
-\end{lstlisting}
-
-\subsection{Add Further Functionalities}
-As a developer, I want to add further functionalities if necessary.\\
-
-We try to achieve this with a modular build and by taking care about coding standards. Code fragments that are used in multiple screens should be exported into a separate class.
-
-\subsection{Tests}
-As a developer, I want tests to ensure the functionality is still provided after I changed the software.\\
-
-This can be done by unit tests. However, based on experience testing the UI doesn't make a lot of sence, so we should focus on functionality tests such as the following example that is thesting the validity of an e-mail address.
-
-\begin{lstlisting}
-if software changed
-	TesttheFunctionality()
-	if the functionality doesn't provided
-		print("Something wrong with the functionality. Rewrite the code!")
-	else
-		exit TesttheFunctionality()
-\end{lstlisting}
-
-
-
-\subsection{Performance}
-Posts  should  be  saved  and  loaded  within half a second after initializing the process.\\
-
-Cached content should be displayed first, so if the connection is slow it doesn't wait for connection until it displays something. To display the list itself in under half a second should not be a problem.
-
-\begin{lstlisting}
-loadCachedData()
-updateView()
-loadFromNetwork()
-updateView()
-\end{lstlisting}
-
-
-\subsection{Scalability}
-The app should be able to handle up to 100users wile staying in the set performance threshold.\\
-
-This should not be a problem on the frontend but maybe on the backend. Using AWS for our backend should solve this problem already since we can add resources if needed. If we get to the limit, we could assist by loading only the necessary data, for example only newly added post and not the whole list.
-
-\begin{lstlisting}
-loadNewPosts(int postNr) {
-    for post in posts {
-        if post.nr >= postNr {
-            sendPost()
-        }
-    }
-}
-\end{lstlisting}
-
-
-\subsection{Cross-device compatibility}
-The  app  should  adapt  to  screen  sizes from 4-7 inches.\\
-
-This can be achieved with constraint-layouts in Android Studio which allows to place items in relation to each other.\\
-
-
-\subsection{Usability}
-The  functionality  should  be  self-explanatory and not require any instruction to use it.\\
-
-This can be achieved by naming buttons in a way that makes sense and place them in a natural way. Following Android guidelines also helps, because users are also used to the gestures from other apps. Also getting user feedback can help to achieve this.\\
-
-
-\subsection{Reliability}
-The  app  should  confirm  visually  if  a  task was done successfully\\
-
-The best way to do this is probably not with pop-ups, but by displaying some kind of loading animation and updating the view after completion.
-
-\begin{lstlisting}
-postContent() --> asynchronous
-displayLoading()
-callback --> updateView()
-\end{lstlisting}
-
-
-\subsection{Security}
-No security measures are planned at this point.Encryption is due to further development.\\
-
-We decided because security is not the simplest thing to implement and would be beyond the scope of this project. But in a real-life productive application, specially if it involves personal data, proper encryption is a must.\\
-
-
-\subsection{Avialability}
-The  app  should  be  available  90\%  of  the time, since this application is not critical.\\
-
-No implementation necessary. Uptime can be calculated as follows:
-
-\begin{lstlisting}
-Time of running service / Total aimed operation time.
-\end{lstlisting}
-
-
-\subsection{Adoption to slow/no networks}
-The app should display cached data if there is no connection.\\
-
-Also minimize network traffic can be helpful. The following article explains well how to achieve this in an android app.
-\url{https://developer.android.com/training/efficient-downloads/redundant_redundant}
-
-\begin{lstlisting}
-loadContent(){
-    checkIfLoadingIsNecessary()
-    if yes {
-        loadFromNetwork()
-    } else {
-        loadCache()
-    }
-    updateView()
-}
-\end{lstlisting}
-
-
-\section{Screens}
-\subsection{Home Screen}
-The Home Screen displays our app name on the top. Under it is a Listview with all the posts loaded from the backend. On the bottom is a plus sign that can be used to create a new post.\\
-\includegraphics[width=6cm]{bibtex/images/Home_Screen.png}
+\begin{center}
+\includegraphics[width=5cm]{bibtex/images/Home_Screen.png}
+\end{center}
 
 \subsection{Add Post Screen}
-This screen shows a button to return to the home screen alongside the app name on the top. Under it is an input field to type a post. When clicking on it, the keyboard opens and with enter-button the post can be sent.\\
-\includegraphics[width=6cm]{bibtex/images/Add_Post_Screen.png}
+This screen is for editing new post and upload it. On the top left it has text box for the post's title, and beneath it there is also a text box for the content. On the bottom, there are 'CANCEL' and 'ADD' button. 'CANCEL' button discards everything written above and brings back to Main screen. 'ADD' button completes post editing and uploads post data to the server.\\
 
-\subsection{Add Post Screen}
-When clicking on a post on the home screen, this view opens. It shows the app name and the post in a bigger view. In the future here could be added more details such as pictures.\\
-\includegraphics[width=10cm]{bibtex/images/Post_Viewing_Screen.png}
+\begin{center}
+\includegraphics[width=5cm]{bibtex/images/Add_Post_Screen.png}
+\end{center}
 
+\subsection{View Post Screen}
+When clicking on a post on the Main screen, this screen opens. It shows the title at the top and content below in a bigger view. In the future here could be added more details such as pictures.\\
 
-
-
-\section{Backend API}
-\subsection{Configuration}
-API Key: 9xx5MAxxbO61HW2EJNFEN1iGidfAAlAucKPUt8M0\\
-
+\begin{center}
+\includegraphics[width=9cm]{bibtex/images/Post_Viewing_Screen.png}
+\end{center}
 
 
+\section{Architecture Design}
+\subsection{Overall System Architecture}
+SHOUTING-PINWALL is set together with two modules. The frontend is an Android App and provides access for users and communicates with the back-end through the Firebase API from Google including encryption of the data. It's responsability is to make sure the user has easy and reliable access to the application and also handling the data.\\
 
-			
+The back-end stores the data it gets from the application. Firebase is a part of the Google Cloud plattform, comparable to amazons AWS. Android and Firebase are both developed by google, are very well compatible and even provide integrated encryption. We tried to get a back-end with amazon AWS to work for quite a while, but it seems to be impossible with a student account and it's restrictions and we had to give up. The Google cloud service also allows integration of analytics, functions, IAM, etc., which would be possible exteionsions for our project.\\
+
+
+\begin{figure}[h]
+    \centering
+    \hfill
+    \includegraphics[width=6.5cm]
+    {bibtex/images/Overall Architecture.png}
+    \hfill
+    \caption{Overall System Architecture}
+\end{figure}
+
+
+
+\clearpage
+\subsection{Directory Organization}
+huguhgutyftyf f yc trc÷÷
+\\ \hspace*{\fill} \\
+
+
+\begin{table}[]
+    \caption{Directory Organization}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Directory & File Name & Module Name \\ \hline
+    Pinwall/app/main & \begin{tabular}[c]{@{}c@{}}AddPostActivity.kt \\ ListAdapater.kt \\ MainActivity.kt \\ Post.kt\\ PostComperator.kt\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/drawable & \begin{tabular}[c]{@{}c@{}}add.png\\ men.png\\ women.png\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/layout & \begin{tabular}[c]{@{}c@{}}activity\_add\_post.xml\\ activity\_main.xml\\ list\_item.xml\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/mipmap-hdpi & \begin{tabular}[c]{@{}c@{}}ic\_launcher.png\\ ic\_launcher\_round.png\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/mipmap-mdpi & \begin{tabular}[c]{@{}c@{}}ic\_launcher.png\\ ic\_launcher\_round.png\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/mipmap-xhdpi & \begin{tabular}[c]{@{}c@{}}ic\_launcher.png\\ ic\_launcher\_round.png\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/mipmap-xxhdpi & \begin{tabular}[c]{@{}c@{}}ic\_launcher.png\\ ic\_launcher\_round.png\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/mipmap-xxxhdi & \begin{tabular}[c]{@{}c@{}}ic\_launcher.png\\ ic\_launcher\_round.png\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/values & \begin{tabular}[c]{@{}c@{}}colors.xml\\ strings.xml\\ themes.xml\end{tabular} & Android App \\ \hline
+    Pinwall/app/res/values-night & themes.xml & Android App \\ \hline
+    Pinwall/doc & \begin{tabular}[c]{@{}c@{}}SHOUTING\\ PINWALL.tex\end{tabular} & Documentation \\ \hline
+    \end{tabular}
+    \end{table}
+
+
+\section{Classes}
+\subsection{AddPostActivity.kt}
+\includegraphics[width = 8cm]{bibtex/images/AddPostActivity.png}
+\begin{enumerate}
+    \item The var 'db' is responsible for handling database and provides function such as storing and loading data from firebase server.
+    \item addBttn in this class triggers action of uploading title and text data to database 'db.'
+\end{enumerate}
+
+\subsection{ListAdapter.kt}
+\includegraphics[width = 8cm]{bibtex/images/ListAdapter.png}
+\begin{enumerate}
+    \item This class includes controls how list of posts are displayed on main screen, by using recyclerview. It fetches 'title' and 'text' data and displays as "listitem.xml" design.
+\end{enumerate}
+
+\subsection{MainActivity.kt}
+\includegraphics[width = 8cm]{bibtex/images/MainActivity.png}
+\begin{enumerate}
+    \item posts
+    \begin{enumerate}
+        \item this is array of data from Post.kt which includes 'title', 'text' and 'timestamp' data.
+    \end{enumerate}
+    \item updateLayout()
+        \begin{enumerate}
+            \item This function loads latest data from the server on starting the app.
+        \end{enumerate}
+    \item loadPosts()
+        \begin{enumerate}
+            \item This function is responsible for loading post data from the server.
+        \end{enumerate}
+    \item onResumeFragments()
+        \begin{enumerate}
+            \item This function allows the app to automatically refresh after returning from other intent such as 'AddPostActivity'
+        \end{enumerate}
+\end{enumerate}
+
+\subsection{Post.kt}
+\includegraphics[width = 8cm]{bibtex/images/Post.png}
+\begin{enumerate}
+    \item title
+        \begin{enumerate}
+            \item Contains String data of what user wrote on 'ap-titleBox' textbox.
+        \end{enumerate}
+    \item text
+        \begin{enumerate}
+            \item Contains String data of what user wrote on 'ap-textBox' textbox.
+        \end{enumerate}
+    \item timestamp
+        \begin{enumerate}
+            \item Contains String data of timestamp when user uploads his/her post on the server.
+        \end{enumerate}
+\end{enumerate}
+
+
+\subsection{PostComperator.kt}
+\includegraphics[width = 8cm]{bibtex/images/PostComperator.png}
+\begin{enumerate}
+    \item By default Posts are sorted by the ID, which is a randomly generated value by firebase. As a result the posts are sorted in a random order. To fix this and order the items by the time added, we added a timestamp to the posts and created this comperator.
+\end{enumerate}
+
+
+
+
+
+\section{Use Cases}
+\subsection{Adding Post}
+\includegraphics[width = 8cm]{bibtex/images/use case 1.png}
+
+\subsection{Updating Post list}
+\includegraphics[width = 7cm]{bibtex/images/use case 2.png}
+
+\subsection{Discard New post}
+\includegraphics[width = 7cm]{bibtex/images/use case 3.png}
+
+
 \end{document}
