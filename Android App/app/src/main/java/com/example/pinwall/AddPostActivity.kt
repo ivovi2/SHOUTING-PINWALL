@@ -31,8 +31,8 @@ class AddPostActivity : AppCompatActivity() {
     private fun addPost(db: FirebaseFirestore, title: String, text: String) {
         val post: MutableMap<String, String> = HashMap()
         val timestamp = Timestamp.now().seconds.toString()
-        post["title"] = title
-        post["text"] = text
+        post["title"] = title.toUpperCase()
+        post["text"] = text.toUpperCase()
         post["timestamp"] = timestamp
 
         // Add a new document with a generated ID
