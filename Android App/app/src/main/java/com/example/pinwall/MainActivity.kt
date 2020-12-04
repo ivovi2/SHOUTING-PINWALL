@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     fun updateLayout(posts: ArrayList<Post>) {
         rv_postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_postList.setHasFixedSize(true)
+        Collections.sort(posts, PostComperator())
         rv_postList.adapter = ListAdapater(posts)
     }
 
@@ -55,8 +58,9 @@ class MainActivity : AppCompatActivity() {
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     val title = document.data.get("title").toString()
-                    val text =document.data.get("text").toString()
-                    val post = Post(title, text)
+                    val text = document.data.get("text").toString()
+                    val timestamp = document.data.get("timestamp").toString()
+                    val post = Post(title, text, timestamp)
                     posts.add(post)
                     updateLayout(posts)
                 }

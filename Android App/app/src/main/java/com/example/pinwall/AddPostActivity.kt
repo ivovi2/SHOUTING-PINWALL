@@ -3,10 +3,9 @@ package com.example.pinwall
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_post.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class AddPostActivity : AppCompatActivity() {
 
@@ -31,8 +30,10 @@ class AddPostActivity : AppCompatActivity() {
 
     private fun addPost(db: FirebaseFirestore, title: String, text: String) {
         val post: MutableMap<String, String> = HashMap()
+        val timestamp = Timestamp.now().seconds.toString()
         post["title"] = title
         post["text"] = text
+        post["timestamp"] = timestamp
 
         // Add a new document with a generated ID
         val TAG = "Message"
