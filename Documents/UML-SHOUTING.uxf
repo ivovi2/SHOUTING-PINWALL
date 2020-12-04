@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>90</y>
+      <w>330</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>_AddPostActivity_
+--
+db: FirebaseFirestore
+--
+#addPost(db: Firebase, title: String, text: String)
+--
+Responsibilities
+-- onClickListeners
+-- Storing data to Database</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>140</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+Package::FatClass
+{Some Properties}
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>350</y>
+      <w>330</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>_ListAdapter_
+--
+--
+#onBindViewHolder(holder: MyHolder, position: Int)
+#getItemCount(): Int
+--
+Responsibilities
+-- Preparing data for Recycler View
+-- Setting Listener on the List Items</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>130</x>
+      <y>420</y>
+      <w>330</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>_Post_
+--
+title: String
+text: String
+timestamp: String
+--
+--
+Responsibilities
+-- Providing an Interface for Posts</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>230</y>
+      <w>330</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>_MainActivity_
+--
+db: FirebaseFirestore
+posts: ArrayList&lt;Post&gt;
+--
+#updateLayout(posts: ArrayList&lt;Post&gt;)
+#onResumeFragments()
+#loadPosts(db: FirebaseFirestore) : ArrayList&lt;Post&gt;
+--
+Responsibilities
+-- Showing list with all entries
+-- Loading the data from the database</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>480</y>
+      <w>360</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>_PostComperator_
+--
+result: Int
+--
+#compare(p0: Post?, p1: Post?): Int
+--
+Responsibilities
+-- Comparing Post objects to ensure correct order</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

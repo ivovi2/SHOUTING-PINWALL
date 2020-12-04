@@ -39,13 +39,13 @@ class MainActivity : AppCompatActivity() {
         loadPosts(FirebaseFirestore.getInstance())
     }
 
+
     fun updateLayout(posts: ArrayList<Post>) {
         rv_postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_postList.setHasFixedSize(true)
         Collections.sort(posts, PostComperator())
         rv_postList.adapter = ListAdapater(posts)
     }
-
 
 
     private fun loadPosts(db: FirebaseFirestore) : ArrayList<Post> {
