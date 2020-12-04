@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -21,8 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
         posts = loadPosts(db)
-
-        //val pinList = initializePinList(posts)
 
         addPostBttn.setOnClickListener {
             var intent = Intent(this, AddPostActivity::class.java) //move to add screen intent obj

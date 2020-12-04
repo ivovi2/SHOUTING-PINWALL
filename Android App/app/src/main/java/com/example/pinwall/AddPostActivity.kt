@@ -29,8 +29,6 @@ class AddPostActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun addPost(db: FirebaseFirestore, title: String, text: String) {
         val post: MutableMap<String, String> = HashMap()
         post["title"] = title
@@ -55,9 +53,6 @@ class AddPostActivity : AppCompatActivity() {
                 )
             }
         finish()
-
     }
-
-
 
 }
