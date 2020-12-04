@@ -198,7 +198,7 @@ To achieve this we need an Android Listview which loads the posts from the backe
 \subsection{Add Posts}
 As a user, I want to be able post a text on the pinwall.\\
 
-A "+"-icon on the bottom of the screen will enable someone to add a post.
+A "+"-icon on the bottom of the screen will let the user access the post-editing page. The screen will switch to new post editing page so the user can write what he/she wants to upload.
 \begin{lstlisting}
     if Click '+' icon {
         moveTo Post Editing Page
@@ -220,14 +220,14 @@ A "+"-icon on the bottom of the screen will enable someone to add a post.
 \end{lstlisting}
 
 \subsection{Save Post}
-As a user I want to be sure my posts are saved, even if I lost my phone.\\
+As a user I want to be sure my posts are saved. Not in the storage of my device but in online DB or server.\\
 
-To achieve this we use the amazon cloud services. Every time a user is posting, the post is automatically uploaded.
+To achieve this we use cloud server services such as amazon cloud services. Whenever a user finishes editing and clicks the 'upload' button, it saves the written content to designated server, so it can be accessed later on by others as well. 
 
 \subsection{Feedback after posting}
 As a user I want feedback after posting to ensure it was successful.\\
 
-To achieve this we simply update the view after storing it. This will give the user visual verification that it worked. If storing fails we'll need to place an error message.
+When the post is successfully uploaded, the app will display a message that it has been successfully uploaded. Or we simply update the view after storing it. This will give the user visual verification that it worked. If storing fails we will need to place an error message.
 
 \subsection{Choose Color of Memos}
 As a user, I want to choose the color of the memo I am going to post.\\
@@ -373,15 +373,24 @@ loadContent(){
 \section{Screens}
 \subsection{Home Screen}
 The Home Screen displays our app name on the top. Under it is a Listview with all the posts loaded from the backend. On the bottom is a plus sign that can be used to create a new post.\\
-\includegraphics[width=8cm]{bibtex/images/Home_Screen.png}
+\includegraphics[width=6cm]{bibtex/images/Home_Screen.png}
 
 \subsection{Add Post Screen}
 This screen shows a button to return to the home screen alongside the app name on the top. Under it is an input field to type a post. When clicking on it, the keyboard opens and with enter-button the post can be sent.\\
-\includegraphics[width=8cm]{bibtex/images/Add_Post_Screen.png}
+\includegraphics[width=6cm]{bibtex/images/Add_Post_Screen.png}
 
 \subsection{Add Post Screen}
 When clicking on a post on the home screen, this view opens. It shows the app name and the post in a bigger view. In the future here could be added more details such as pictures.\\
 \includegraphics[width=10cm]{bibtex/images/Post_Viewing_Screen.png}
+
+
+
+
+\section{Backend API}
+\subsection{Configuration}
+API Key: 9xx5MAxxbO61HW2EJNFEN1iGidfAAlAucKPUt8M0\\
+
+
 
 
 			
