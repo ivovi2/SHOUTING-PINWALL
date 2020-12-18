@@ -76,12 +76,24 @@ class MainActivity : AppCompatActivity() {
 
     fun deletePost(view: View) {
         if (view is Button) {
-            val id = view.
-            val intent = Intent(this, DrawActivity::class.java).apply {
-                putExtra(AlarmClock.EXTRA_MESSAGE, message)
-            }
-            startActivity(intent)
+            val db = FirebaseFirestore.getInstance()
+            val id = view.id
+            val TAG = view.text.toString()
+            db.collection("cities").document("DC")
+                    .delete()
+                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
         }
     }
 
+    fun deleteAllPosts(view: View) {
+        if (view is Button) {
+            val db = FirebaseFirestore.getInstance()
+            val TAG = view.text.toString()
+            db.collection("posts").document()
+                    .delete()
+                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+        }
+    }
 }
