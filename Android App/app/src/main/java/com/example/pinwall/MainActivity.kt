@@ -2,7 +2,10 @@ package com.example.pinwall
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
@@ -70,4 +73,15 @@ class MainActivity : AppCompatActivity() {
             }
         return posts
     }
+
+    fun deletePost(view: View) {
+        if (view is Button) {
+            val id = view.
+            val intent = Intent(this, DrawActivity::class.java).apply {
+                putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            }
+            startActivity(intent)
+        }
+    }
+
 }
